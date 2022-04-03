@@ -188,6 +188,8 @@ GetNewTarget();  // Ищем первую клетку с травой
 bool is_clean_pole = false;
 nm = NextMove(target_x,target_y,gc_x,gc_y,pole); // определяем, куда двигаться будем
 PrintPole(pole);
+Console.SetCursorPosition(w_width/2-19,w_height/2);  // начальная информация
+Console.WriteLine("Нажимайете -=пробел=-, чтобы двигаться");
 while (Console.ReadKey().Key!=ConsoleKey.Q) // работаем, пока кнопку Q не нажмут (или цикл break не прервет)
 {
     PrintPole(pole);  // красиво отрисовываем поле со всеми объектами
@@ -233,3 +235,10 @@ while (Console.ReadKey().Key!=ConsoleKey.Q) // работаем, пока кно
     else {break;}  // выходим из программы (или все скосили или сломались или бензин кончился)
 }
 Console.WriteLine();
+switch (mode)
+{
+  case 2: Console.WriteLine("Работа завершена, все поле скошено!");break;
+  case 4: Console.WriteLine("Работа закончена. Газонокосилка сломалась, и больше двигаться не может!");break;
+  case 5: Console.WriteLine("Работа закончена. В газонокосилке закончился бензин!");break;
+  default: Console.WriteLine("Программу прервали принудительно. Теперь сами и косите свое поле!");break;
+}
