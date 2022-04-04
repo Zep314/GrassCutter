@@ -205,7 +205,6 @@ while (Console.ReadKey().Key!=ConsoleKey.Q) // работаем, пока кно
         }
 
         fuel--; move++;  // путь растет, а топливо кончается
-        if (fuel<1) mode = 5;  // бензин кончился совсем
         if ((fuel_x==gc_x)&&(fuel_y==gc_y)) // приехали в заправку
         {
             fuel=max_fuel;  // полный бак
@@ -229,6 +228,7 @@ while (Console.ReadKey().Key!=ConsoleKey.Q) // работаем, пока кно
             for(int j=1;j<w_width-1;j++)
                 if (pole[i,j]==0) {is_clean_pole=false;break;} 
         if (is_clean_pole) {mode=2;} // ага, все скосили точно!    
+        if (fuel<0) {mode = 5;}  // бензин кончился совсем
         if ((target_x==gc_x)&&(target_y==gc_y)&&(mode == 0)) GetNewTarget(); // цель достигнута, берем новую!
         nm = NextMove(target_x,target_y,gc_x,gc_y,pole); // определяем, в какую сторону будем двигаться
     }
